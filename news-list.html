@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="icon" href="assets/favicon.ico" sizes="any" />
+      <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+      <link rel="manifest" href="assets/site.webmanifest" />
+    <meta name="description" content="Browse the latest news in Tamil, English, Hindi, Telugu and Malayalam. Filter stories by topic and language on MZ News &amp; Article." />
+    <meta name="keywords" content="latest news, Tamil news, English news, Hindi news, Telugu news, Malayalam news, India news" />
+    <meta name="author" content="MZ News &amp; Article" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0b1e5b" />
+    <link rel="canonical" href="news-list.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MZ News &amp; Article" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:title" content="Latest News — MZ News &amp; Article" />
+    <meta property="og:description" content="Browse the latest news in Tamil, English, Hindi, Telugu and Malayalam, across topics that matter." />
+    <meta property="og:url" content="news-list.html" />
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta property="og:image:alt" content="MZ News &amp; Article multilingual news identity" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Latest News — MZ News &amp; Article" />
+    <meta name="twitter:description" content="Browse the latest news in Tamil, English, Hindi, Telugu and Malayalam, across topics that matter." />
+    <meta name="twitter:image" content="assets/og-image.png" />
+  <title>Latest News — MZ News &amp; Article</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', 'Segoe UI', sans-serif; }
+
+    /* ── Page Hero ── */
+    .nl-hero {
+      background: linear-gradient(135deg, #0d2266 0%, #1e50c8 100%);
+      padding: 28px 0 26px;
+      border-bottom: 3px solid #2563eb;
+    }
+    .nl-hero-inner { display:flex; align-items:center; gap:14px; }
+    .nl-hero-icon {
+      width:46px; height:46px; border-radius:50%;
+      background:rgba(255,255,255,0.15);
+      display:flex; align-items:center; justify-content:center; color:#fff;
+    }
+    .nl-hero-text h1 { font-size:24px; font-weight:900; color:#fff; }
+    .nl-hero-text p  { font-size:13px; color:rgba(255,255,255,0.65); margin-top:2px; }
+    .nl-breadcrumb {
+      display:flex; align-items:center; gap:5px;
+      font-size:12px; color:rgba(255,255,255,0.55); margin-top:5px;
+    }
+    .nl-breadcrumb a { color:rgba(255,255,255,0.75); transition:color .18s; }
+    .nl-breadcrumb a:hover { color:#fff; }
+
+    /* ── Category Filter Bar ── */
+    .nl-filter-wrap {
+      background:#fff;
+      border-bottom:1px solid #e2e8f0;
+      padding:0;
+      position:sticky; top:68px; z-index:90;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    }
+    .nl-filter-inner {
+      display:flex; align-items:center; gap:4px;
+      padding:10px 0; overflow-x:auto; scrollbar-width:none;
+    }
+    .nl-filter-inner::-webkit-scrollbar { display:none; }
+    .nl-cat-btn {
+      padding:7px 18px; border-radius:20px;
+      font-size:13px; font-weight:600; color:#475569;
+      background:transparent; border:1.5px solid #e2e8f0;
+      cursor:pointer; white-space:nowrap; flex-shrink:0;
+      transition:background .18s, color .18s, border-color .18s;
+    }
+    .nl-cat-btn:hover { border-color:#2563eb; color:#2563eb; background:#eff6ff; }
+    .nl-cat-btn.active { background:#1d4ed8; color:#fff; border-color:#1d4ed8; }
+
+    /* ── Main layout ── */
+    .nl-body { padding:28px 0 52px; }
+    .nl-layout { display:grid; grid-template-columns:1fr 300px; gap:24px; align-items:start; }
+
+    .nl-tools {
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; margin-bottom:18px; flex-wrap:wrap;
+    }
+    .nl-search {
+      display:flex; align-items:center; gap:9px; flex:1;
+      max-width:440px; min-width:220px; padding:0 12px;
+      background:#fff; border:1px solid #cbd5e1; border-radius:8px;
+    }
+    .nl-search svg { width:17px; height:17px; color:#64748b; flex-shrink:0; }
+    .nl-search input {
+      width:100%; min-width:0; height:42px; border:0; outline:0;
+      background:transparent; color:#0f172a; font:inherit; font-size:13px;
+    }
+    .nl-search:focus-within { border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.12); }
+    .nl-search-clear {
+      display:none; width:28px; height:28px; align-items:center; justify-content:center;
+      color:#64748b; font-size:20px; line-height:1; border-radius:50%; flex-shrink:0;
+    }
+    .nl-search-clear:hover { background:#eff6ff; color:#1d4ed8; }
+    .nl-result-count { color:#64748b; font-size:12.5px; font-weight:600; }
+
+    /* ── 2-column card grid ── */
+    .nl-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+
+    /* ── News Card ── */
+    .nlc {
+      background:#fff; border-radius:14px;
+      border:1px solid #e2e8f0;
+      box-shadow:0 2px 8px rgba(37,99,235,0.06);
+      overflow:hidden; cursor:pointer;
+      transition:box-shadow .2s, transform .2s;
+      display:flex; flex-direction:column;
+    }
+    .nlc:hover { box-shadow:0 8px 28px rgba(37,99,235,0.14); transform:translateY(-3px); }
+
+    .nlc-img-wrap { position:relative; overflow:hidden; }
+    .nlc-img {
+      width:100%; height:190px; object-fit:cover;
+      display:block; transition:transform .35s ease;
+    }
+    .nlc:hover .nlc-img { transform:scale(1.04); }
+
+    .nlc-badge {
+      position:absolute; top:10px; left:10px;
+      padding:3px 10px; border-radius:20px;
+      font-size:10px; font-weight:700; letter-spacing:.4px;
+      text-transform:uppercase; color:#fff;
+    }
+    .nlc-badge.science    { background:#059669; }
+    .nlc-badge.politics   { background:#dc2626; }
+    .nlc-badge.technology { background:#7c3aed; }
+    .nlc-badge.business   { background:#d97706; }
+    .nlc-badge.world      { background:#0891b2; }
+    .nlc-badge.sports     { background:#16a34a; }
+    .nlc-badge.health     { background:#0d9488; }
+    .nlc-badge.entertainment { background:#db2777; }
+
+    .nlc-body { padding:16px; flex:1; display:flex; flex-direction:column; gap:8px; }
+    .nlc-meta { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+    .nlc-lang {
+      padding:2px 8px; border-radius:10px;
+      font-size:10px; font-weight:700;
+    }
+    .nlc-lang.tamil    { background:#fee2e2; color:#b91c1c; }
+    .nlc-lang.english  { background:#dbeafe; color:#1e40af; }
+    .nlc-lang.hindi    { background:#fef3c7; color:#92400e; }
+    .nlc-lang.telugu   { background:#d1fae5; color:#065f46; }
+    .nlc-lang.malayalam{ background:#ede9fe; color:#5b21b6; }
+
+    .nlc-title {
+      font-size:15px; font-weight:800; color:#0f172a;
+      line-height:1.45; flex:1;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+      transition:color .18s;
+    }
+    .nlc:hover .nlc-title { color:#2563eb; }
+    .nlc-desc {
+      font-size:12.5px; color:#64748b; line-height:1.6;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+    }
+    .nlc-footer { display:flex; align-items:center; justify-content:space-between; margin-top:4px; }
+    .nlc-time { display:flex; align-items:center; gap:4px; font-size:11.5px; color:#94a3b8; }
+    .nlc-time svg { width:12px; height:12px; }
+    .nlc-read {
+      display:inline-flex; align-items:center; gap:5px;
+      padding:5px 14px; background:#1d4ed8; color:#fff;
+      border-radius:20px; font-size:11.5px; font-weight:700;
+      transition:background .18s;
+    }
+    .nlc-read:hover { background:#2563eb; }
+    .nlc-read svg { width:13px; height:13px; }
+
+    /* Hidden card */
+    .nlc.hidden { display:none; }
+
+    /* ── Pagination ── */
+    .nl-pagination { display:flex; align-items:center; gap:6px; margin-top:28px; flex-wrap:wrap; }
+    .nl-pg-btn {
+      width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+      border-radius:8px; border:1.5px solid #e2e8f0; background:#fff;
+      color:#475569; font-size:13px; font-weight:700; cursor:pointer;
+      transition:background .18s, color .18s, border-color .18s;
+    }
+    .nl-pg-btn:hover, .nl-pg-btn.active {
+      background:#1d4ed8; color:#fff; border-color:#1d4ed8;
+    }
+    .nl-pg-btn.prev-next { width:auto; padding:0 14px; gap:4px; }
+
+    /* ── Sidebar ── */
+    .nl-sidebar { display:flex; flex-direction:column; gap:20px; }
+
+    /* Trending card */
+    .tsc {
+      background:#fff; border-radius:14px;
+      border:1px solid #e2e8f0;
+      box-shadow:0 2px 8px rgba(37,99,235,0.06);
+      overflow:hidden;
+    }
+    .tsc-head {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 16px 12px;
+      background:linear-gradient(135deg,#1d4ed8 0%,#2563eb 100%);
+    }
+    .tsc-head-title { display:flex; align-items:center; gap:8px; font-size:14px; font-weight:800; color:#fff; }
+    .tsc-head-title svg { color:#fbbf24; }
+    .tsc-view-all { font-size:12px; font-weight:600; color:rgba(255,255,255,0.8); display:flex; align-items:center; gap:4px; }
+    .tsc-view-all:hover { color:#fff; }
+
+    .tsc-item {
+      display:flex; align-items:center; gap:10px;
+      padding:10px 14px; border-bottom:1px solid #f1f5f9;
+      cursor:pointer; transition:background .15s;
+    }
+    .tsc-item:last-child { border-bottom:none; }
+    .tsc-item:hover { background:#f8faff; }
+    .tsc-num { font-size:18px; font-weight:900; color:#2563eb; min-width:22px; flex-shrink:0; }
+    .tsc-item:nth-child(1) .tsc-num { color:#0d2266; }
+    .tsc-item:nth-child(2) .tsc-num { color:#1d4ed8; }
+    .tsc-item:nth-child(3) .tsc-num { color:#2563eb; }
+    .tsc-item:nth-child(4) .tsc-num { color:#3b82f6; }
+    .tsc-item:nth-child(5) .tsc-num { color:#3b82f6; }
+    .tsc-thumb { width:60px; height:46px; border-radius:8px; object-fit:cover; flex-shrink:0; background:#e2e8f0; }
+    .tsc-body { flex:1; min-width:0; }
+    .tsc-title { font-size:12.5px; font-weight:700; color:#0f172a; line-height:1.4;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin-bottom:3px; }
+    .tsc-time { display:flex; align-items:center; gap:3px; font-size:11px; color:#94a3b8; }
+    .tsc-time svg { width:11px; height:11px; }
+
+    /* ── Responsive ── */
+    @media(max-width:1024px){ .nl-layout{grid-template-columns:1fr;} }
+    @media(max-width:640px){
+      .nl-grid{grid-template-columns:1fr;}
+      .nlc-img{height:200px;}
+      .nl-search { max-width:none; }
+      .nl-result-count { width:100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <img src="Logo.png" alt="MZ News Logo" />
+      <div class="navbar-logo-text">
+        <span class="brand-name">MZ NEWS &amp; ARTICLE</span>
+        <span class="brand-tagline">Truth · Trust · Together | Your Trusted Global News Hub</span>
+      </div>
+    </a>
+
+    <ul class="navbar-nav" id="navbarNav">
+      <li><a href="index.html" class="nav-link" id="navHome">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
+      </a></li>
+      <li><a href="news-list.html" class="nav-link active" id="navLatest">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>Latest News
+      </a></li>
+      <li><a href="news-list.html?cat=politics" class="nav-link" id="navPolitics">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="12" x2="2" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>Politics
+      </a></li>
+      <li><a href="news-list.html?cat=business" class="nav-link" id="navBusiness">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>Business
+      </a></li>
+      <li><a href="news-list.html?cat=technology" class="nav-link" id="navTech">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Technology
+      </a></li>
+      <li class="nav-more">
+        <span style="display:flex;align-items:center;gap:5px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>More
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+        <div class="nav-more-dropdown">
+          <a href="news-list.html?cat=sports"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/></svg>Sports</a>
+          <a href="news-list.html?cat=entertainment"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Entertainment</a>
+          <a href="news-list.html?cat=health"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Health</a>
+          <a href="news-list.html?cat=world"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>World</a>
+        </div>
+      </li>
+    </ul>
+
+    <div class="navbar-actions" id="navbarActions">
+      <a href="login.html" class="btn-login">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Login
+      </a>
+      <a href="signup.html" class="btn-register">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Register / Sign Up
+      </a>
+      <button class="btn-search" id="searchToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="search-bar" id="searchBar">
+    <div class="search-bar-inner">
+      <input type="text" placeholder="Search news, articles, topics…" id="searchInput" />
+      <button class="search-submit">Search</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ PAGE HERO ════════════════════════════════════════════ -->
+<div class="nl-hero">
+  <div class="container nl-hero-inner">
+    <div class="nl-hero-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+    </div>
+    <div class="nl-hero-text">
+      <h1 id="pageTitle">Latest News</h1>
+      <p>Stay informed with breaking news, in-depth articles and exclusive stories</p>
+      <div class="nl-breadcrumb">
+        <a href="index.html">Home</a>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><polyline points="9 18 15 12 9 6"/></svg>
+        <span id="breadcrumbLabel">Latest News</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CATEGORY FILTER ══════════════════════════════════════ -->
+<div class="nl-filter-wrap">
+  <div class="container nl-filter-inner" id="catFilter">
+    <button class="nl-cat-btn active" data-cat="all">All News</button>
+    <button class="nl-cat-btn" data-cat="politics">Politics</button>
+    <button class="nl-cat-btn" data-cat="business">Business</button>
+    <button class="nl-cat-btn" data-cat="technology">Technology</button>
+    <button class="nl-cat-btn" data-cat="sports">Sports</button>
+    <button class="nl-cat-btn" data-cat="world">World</button>
+    <button class="nl-cat-btn" data-cat="health">Health</button>
+    <button class="nl-cat-btn" data-cat="entertainment">Entertainment</button>
+    <button class="nl-cat-btn" data-cat="tamil">Tamil</button>
+    <button class="nl-cat-btn" data-cat="english">English</button>
+    <button class="nl-cat-btn" data-cat="hindi">Hindi</button>
+    <button class="nl-cat-btn" data-cat="telugu">Telugu</button>
+    <button class="nl-cat-btn" data-cat="malayalam">Malayalam</button>
+  </div>
+</div>
+
+<!-- ══ BODY ═════════════════════════════════════════════════ -->
+<section class="nl-body">
+  <div class="container nl-layout">
+
+    <!-- LEFT: News Grid -->
+    <div>
+      <div class="nl-tools">
+        <div class="nl-search">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="articleSearch" aria-label="Search headlines and stories" placeholder="Search headlines and stories..." autocomplete="off" />
+          <button class="nl-search-clear" id="clearArticleSearch" type="button" aria-label="Clear search">×</button>
+        </div>
+        <p class="nl-result-count" id="resultCount" aria-live="polite"></p>
+      </div>
+      <div class="nl-grid" id="nlGrid">
+
+        <!-- Card 1 — Technology -->
+        <article class="nlc" data-cat="technology english" onclick="location.href='news-details.html?id=1'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" alt="AI Technology" />
+            <span class="nlc-badge technology">Technology</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang english">English</span></div>
+            <div class="nlc-title">New AI Model Set to Change the Future of Global Technology Industry</div>
+            <p class="nlc-desc">Global tech companies unveil next-generation AI models with advanced capabilities, promising a new era of innovation and automation that will reshape industries worldwide.</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 hours ago</div>
+              <a href="news-details.html?id=1" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 — Politics -->
+        <article class="nlc" data-cat="politics hindi" onclick="location.href='news-details.html?id=2'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80" alt="Politics" />
+            <span class="nlc-badge politics">Politics</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang hindi">Hindi</span></div>
+            <div class="nlc-title">सरकार ने सभी राज्यों में नई कल्याण योजनाएं शुरू करने की घोषणा की</div>
+            <p class="nlc-desc">केंद्र सरकार ने शिक्षा, स्वास्थ्य और ग्रामीण विकास पर ध्यान केंद्रित करते हुए व्यापक कल्याण योजनाएं शुरू कीं, जिससे देशभर के करोड़ों नागरिकों को लाभ मिलेगा।</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 hours ago</div>
+              <a href="news-details.html?id=2" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 — Business -->
+        <article class="nlc" data-cat="business tamil" onclick="location.href='news-details.html?id=3'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=600&q=80" alt="Gold Business" />
+            <span class="nlc-badge business">Business</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang tamil">Tamil</span></div>
+            <div class="nlc-title">தமிழ்நாட்டில் தங்கம் விலை சர்வகால உச்சத்தை தொட்டது</div>
+            <p class="nlc-desc">பண்டிகை காலத்தில் தேவை அதிகரிப்பால் தமிழ்நாட்டில் தங்கம் விலை சர்வகால உச்சத்தை தொட்டது; நகை கடைகளில் விற்பனை கணிசமாக உயர்ந்துள்ளது.</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 hours ago</div>
+              <a href="news-details.html?id=3" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 — World -->
+        <article class="nlc" data-cat="world english" onclick="location.href='news-details.html?id=4'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80" alt="Climate" />
+            <span class="nlc-badge world">World</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang english">English</span></div>
+            <div class="nlc-title">International Climate Summit Reaches Historic Net-Zero Agreement</div>
+            <p class="nlc-desc">World leaders sign landmark climate deal committing to net-zero emissions by 2040, marking a historic turning point in global environmental policy and international cooperation.</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 day ago</div>
+              <a href="news-details.html?id=4" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5 — Sports -->
+        <article class="nlc" data-cat="sports tamil" onclick="location.href='news-details.html?id=5'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600&q=80" alt="Cricket" />
+            <span class="nlc-badge sports">Sports</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang tamil">Tamil</span></div>
+            <div class="nlc-title">சென்னை சூப்பர் கிங்ஸ் கடைசி பந்தில் ஐபிஎல் கோப்பை வென்றது</div>
+            <p class="nlc-desc">சிஎஸ்கே மிகவும் பரபரப்பான இறுதிப் போட்டியில் ஐபிஎல் கோப்பையை வென்றது; கடைசி பந்தில் சாதனை விளையாட்டு ரசிகர்களுக்கு மறக்கமுடியாத தருணம் தந்தது.</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3 hours ago</div>
+              <a href="news-details.html?id=5" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6 — Science -->
+        <article class="nlc" data-cat="technology english" onclick="location.href='news-details.html?id=6'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=600&q=80" alt="ISRO Satellite" />
+            <span class="nlc-badge science">Science</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang english">English</span></div>
+            <div class="nlc-title">ISRO Successfully Launches New Earth Observation Satellite Mission</div>
+            <p class="nlc-desc">ISRO marks another milestone with the successful launch of its latest satellite, boosting India's space research capabilities and global presence in the cosmos.</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 hours ago</div>
+              <a href="news-details.html?id=6" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 7 — Politics Tamil -->
+        <article class="nlc" data-cat="politics tamil" onclick="location.href='news-details.html?id=7'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80" alt="Tamil Politics" />
+            <span class="nlc-badge politics">Politics</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang tamil">Tamil</span></div>
+            <div class="nlc-title">சென்னை புறநகர் பகுதிகளுக்கு புதிய மெட்ரோ ரயில் திட்டம் அறிவிப்பு</div>
+            <p class="nlc-desc">புறநகர் பகுதிகளை இணைக்கும் புதிய மெட்ரோ ரயில் கட்டத்திற்கான திட்டங்களை முதலமைச்சர் வெளியிட்டார்; நகர போக்குவரத்து நெரிசலை குறைக்கும் என எதிர்பார்க்கப்படுகிறது.</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 hour ago</div>
+              <a href="news-details.html?id=7" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 8 — Health -->
+        <article class="nlc" data-cat="health english" onclick="location.href='news-details.html?id=8'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" alt="Health Research" />
+            <span class="nlc-badge health">Health</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang english">English</span></div>
+            <div class="nlc-title">Breakthrough Cancer Research Offers New Hope for Early Detection</div>
+            <p class="nlc-desc">Scientists announce a major breakthrough that could revolutionise early detection of multiple cancer types, potentially saving millions of lives globally.</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>14 hours ago</div>
+              <a href="news-details.html?id=8" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 9 — Telugu -->
+        <article class="nlc" data-cat="politics telugu" onclick="location.href='news-details.html?id=9'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80" alt="Telugu Politics" />
+            <span class="nlc-badge politics">Politics</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang telugu">Telugu</span></div>
+            <div class="nlc-title">తెలంగాణ ప్రభుత్వం పెట్టుబడులను ఆకర్షించేందుకు కొత్త IT విధానం ప్రకటించింది</div>
+            <p class="nlc-desc">తెలంగాణ ప్రభుత్వం టెక్నాలజీ కంపెనీలను ఆకర్షించేందుకు పెద్ద ప్రోత్సాహకాలతో కొత్త IT విధానాన్ని ప్రకటించింది; హైదరాబాద్ టెక్ కారిడార్‌లో ఉపాధి పెరగనుంది.</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 hours ago</div>
+              <a href="news-details.html?id=9" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 10 — Malayalam -->
+        <article class="nlc" data-cat="health malayalam" onclick="location.href='news-details.html?id=10'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" alt="Kerala Health" />
+            <span class="nlc-badge health">Health</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang malayalam">Malayalam</span></div>
+            <div class="nlc-title">തുടർച്ചയായ മൂന്നാം വർഷവും കേരളം ദേശീയ ആരോഗ്യ സൂചികയിൽ ഒന്നാം സ്ഥാനം നിലനിർത്തി</div>
+            <p class="nlc-desc">ശക്തമായ പൊതുജനാരോഗ്യ അടിസ്ഥാന സൗകര്യവും സർക്കാർ പദ്ധതികളും കാരണം കേരളം തുടർച്ചയായ മൂന്നാം വർഷവും ഇന്ത്യയിലെ ഏറ്റവും ആരോഗ്യകരമായ സംസ്ഥാനം ആയി.</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 hours ago</div>
+              <a href="news-details.html?id=10" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 11 — Business Hindi -->
+        <article class="nlc" data-cat="business hindi" onclick="location.href='news-details.html?id=11'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt="Stock Market" />
+            <span class="nlc-badge business">Business</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang hindi">Hindi</span></div>
+            <div class="nlc-title">देश के बाजारों में सोने-चांदी की कीमतों में जबरदस्त उछाल</div>
+            <p class="nlc-desc">घरेलू बाजारों में सोने की कीमत 800 रुपये प्रति 10 ग्राम बढ़ी; कमजोर रुपये और वैश्विक मांग के कारण कीमतों में यह तेजी आई।</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 hours ago</div>
+              <a href="news-details.html?id=11" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 12 — Entertainment -->
+        <article class="nlc" data-cat="entertainment tamil" onclick="location.href='news-details.html?id=12'">
+          <div class="nlc-img-wrap">
+            <img class="nlc-img" src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=600&q=80" alt="Cinema" />
+            <span class="nlc-badge entertainment">Cinema</span>
+          </div>
+          <div class="nlc-body">
+            <div class="nlc-meta"><span class="nlc-lang tamil">Tamil</span></div>
+            <div class="nlc-title">ரஜினிகாந்தின் புதிய திரைப்படம் முதல் நாள் வசூல் சாதனை படைத்தது</div>
+            <p class="nlc-desc">சூப்பர்ஸ்டார் ரஜினிகாந்தின் புதிய படம் தமிழ்நாடு, ஆந்திரப் பிரதேசம் மற்றும் உலகளவில் முதல் நாள் வசூலில் அசத்தலான சாதனை படைத்துள்ளது.</p>
+            <div class="nlc-footer">
+              <div class="nlc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 hours ago</div>
+              <a href="news-details.html?id=12" class="nlc-read">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /nl-grid -->
+
+      <!-- No results message -->
+      <div id="noResults" style="display:none;text-align:center;padding:48px 20px;color:#94a3b8;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="48" height="48" style="margin:0 auto 12px;display:block;opacity:.4"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <p style="font-size:16px;font-weight:700;color:#475569;">No articles found</p>
+        <p style="font-size:13px;margin-top:4px;">Try a different category or check back soon.</p>
+      </div>
+
+      <!-- Pagination -->
+      <div class="nl-pagination" id="pagination">
+        <button class="nl-pg-btn prev-next" id="prevBtn" disabled>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Prev
+        </button>
+        <button class="nl-pg-btn active" data-page="1">1</button>
+        <button class="nl-pg-btn" data-page="2">2</button>
+        <button class="nl-pg-btn" data-page="3">3</button>
+        <button class="nl-pg-btn" data-page="4">4</button>
+        <button class="nl-pg-btn" data-page="5">5</button>
+        <button class="nl-pg-btn prev-next" id="nextBtn">
+          Next
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+
+    </div><!-- /left col -->
+
+    <!-- RIGHT: Sidebar -->
+    <aside class="nl-sidebar">
+
+      <!-- Trending News -->
+      <div class="tsc">
+        <div class="tsc-head">
+          <div class="tsc-head-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Trending News
+          </div>
+          <a href="news-list.html" class="tsc-view-all">
+            View All
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div>
+          <a href="news-details.html" class="tsc-item">
+            <span class="tsc-num">1</span>
+            <img class="tsc-thumb" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=120&q=75" alt="Cyclone" />
+            <div class="tsc-body">
+              <div class="tsc-title">Cyclone Alert Issued in Several Coastal Districts</div>
+              <div class="tsc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3 hours ago</div>
+            </div>
+          </a>
+          <a href="news-details.html" class="tsc-item">
+            <span class="tsc-num">2</span>
+            <img class="tsc-thumb" src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=120&q=75" alt="Gold" />
+            <div class="tsc-body">
+              <div class="tsc-title">Gold Prices Rise Again in Domestic Markets</div>
+              <div class="tsc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 hours ago</div>
+            </div>
+          </a>
+          <a href="news-details.html" class="tsc-item">
+            <span class="tsc-num">3</span>
+            <img class="tsc-thumb" src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=120&q=75" alt="Cinema" />
+            <div class="tsc-body">
+              <div class="tsc-title">New Tamil Movie Creates Blockbuster Records</div>
+              <div class="tsc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 hours ago</div>
+            </div>
+          </a>
+          <a href="news-details.html" class="tsc-item">
+            <span class="tsc-num">4</span>
+            <img class="tsc-thumb" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=120&q=75" alt="Apple AI" />
+            <div class="tsc-body">
+              <div class="tsc-title">Apple Unveils Latest iPhone with AI Features</div>
+              <div class="tsc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 hours ago</div>
+            </div>
+          </a>
+          <a href="news-details.html" class="tsc-item">
+            <span class="tsc-num">5</span>
+            <img class="tsc-thumb" src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=120&q=75" alt="Cricket" />
+            <div class="tsc-body">
+              <div class="tsc-title">India's Young Star Shines with Superb Knock</div>
+              <div class="tsc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>12 hours ago</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Browse by Language -->
+      <div class="tsc">
+        <div class="tsc-head">
+          <div class="tsc-head-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Browse by Language
+          </div>
+        </div>
+        <div style="padding:8px 0;">
+          <a href="news-list.html?lang=tamil" class="tsc-item" style="text-decoration:none;">
+            <span style="font-size:16px;">🔴</span>
+            <div class="tsc-body"><div class="tsc-title" style="-webkit-line-clamp:1;">தமிழ் — Tamil News</div></div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="color:#2563eb;flex-shrink:0;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="news-list.html?lang=english" class="tsc-item" style="text-decoration:none;">
+            <span style="font-size:16px;">🔵</span>
+            <div class="tsc-body"><div class="tsc-title" style="-webkit-line-clamp:1;">English News</div></div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="color:#2563eb;flex-shrink:0;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="news-list.html?lang=hindi" class="tsc-item" style="text-decoration:none;">
+            <span style="font-size:16px;">🟡</span>
+            <div class="tsc-body"><div class="tsc-title" style="-webkit-line-clamp:1;">हिंदी — Hindi News</div></div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="color:#2563eb;flex-shrink:0;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="news-list.html?lang=telugu" class="tsc-item" style="text-decoration:none;">
+            <span style="font-size:16px;">🟢</span>
+            <div class="tsc-body"><div class="tsc-title" style="-webkit-line-clamp:1;">తెలుగు — Telugu News</div></div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="color:#2563eb;flex-shrink:0;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="news-list.html?lang=malayalam" class="tsc-item" style="text-decoration:none;border-bottom:none;">
+            <span style="font-size:16px;">🟣</span>
+            <div class="tsc-body"><div class="tsc-title" style="-webkit-line-clamp:1;">മലയാളം — Malayalam</div></div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="color:#2563eb;flex-shrink:0;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </aside>
+  </div><!-- /nl-layout -->
+</section><!-- /nl-body -->
+
+<!-- ══ FOOTER ════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-accent-bar"></div>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-logo-row">
+            <img src="Logo.png" alt="MZ News" class="footer-logo-img" />
+            <div>
+              <div class="footer-brand-name">MZ NEWS &amp; ARTICLE</div>
+              <div class="footer-brand-tagline">Truth · Trust · Together</div>
+            </div>
+          </div>
+          <p class="footer-about-text">Your trusted global news hub delivering breaking news, in-depth articles,<br>and exclusive stories across 5+ languages.</p>
+          <div class="footer-socials">
+          <div class="footer-links-right">
+          <div class="footer-links-col">
+            <div class="footer-col-header"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Quick Links</div>
+            <ul class="footer-links-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="news-list.html">Latest News</a></li>
+              <li><a href="news-list.html?cat=politics">Politics</a></li>
+              <li><a href="news-list.html?cat=business">Business</a></li>
+              <li><a href="news-list.html?cat=technology">Technology</a></li>
+              <li><a href="news-list.html?cat=sports">Sports</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <div class="footer-col-header"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Languages</div>
+            <ul class="footer-links-list">
+              <li><a href="news-list.html?lang=tamil"><span class="fl">🔴</span> Tamil — தமிழ்</a></li>
+              <li><a href="news-list.html?lang=english"><span class="fl">🔵</span> English News</a></li>
+              <li><a href="news-list.html?lang=hindi"><span class="fl">🟡</span> Hindi — हिंदी</a></li>
+              <li><a href="news-list.html?lang=telugu"><span class="fl">🟢</span> Telugu — తెలుగు</a></li>
+              <li><a href="news-list.html?lang=malayalam"><span class="fl">🟣</span> Malayalam — മലയാളം</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <div class="footer-col-header"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Company</div>
+            <ul class="footer-links-list">
+              <li><a href="about.html">About MZ News</a></li>
+              <li><a href="team.html">Our Team</a></li>
+              <li><a href="editorial-policy.html">Editorial Policy</a></li>
+              <li><a href="advertise.html">Advertise With Us</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms-of-use.html">Terms of Use</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom-bar">
+    <div class="container footer-bottom-inner">
+      <p class="footer-copy">&copy; 2026 MZ News &amp; Article. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy-policy.html">Privacy Policy</a><span class="footer-dot">·</span>
+        <a href="terms-of-use.html">Terms of Use</a><span class="footer-dot">·</span>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+/* ── Navbar active state from URL ── */
+(function(){
+  var p = new URLSearchParams(window.location.search);
+  var cat = p.get('cat') || p.get('lang') || '';
+  var navMap = { politics:'navPolitics', business:'navBusiness', technology:'navTech' };
+  document.querySelectorAll('.nav-link').forEach(function(l){ l.classList.remove('active'); });
+  if(navMap[cat]) {
+    document.getElementById('navPolitics') && document.getElementById('navPolitics').classList.remove('active');
+    var el = document.getElementById(navMap[cat]);
+    if(el){ el.classList.add('active'); document.getElementById('navLatest').classList.remove('active'); }
+  } else {
+    document.getElementById('navLatest').classList.add('active');
+  }
+})();
+
+/* ── Category filter + pagination ── */
+var CARDS_PER_PAGE = 6;
+var currentPage = 1;
+var activeCat = 'all';
+var articleSearch = document.getElementById('articleSearch');
+var clearArticleSearch = document.getElementById('clearArticleSearch');
+var resultCount = document.getElementById('resultCount');
+
+var urlP = new URLSearchParams(window.location.search);
+var initCat = urlP.get('cat') || urlP.get('lang') || 'all';
+var initQuery = urlP.get('q') || '';
+articleSearch.value = initQuery;
+var navbarSearchInput = document.getElementById('searchInput');
+if(navbarSearchInput) navbarSearchInput.value = initQuery;
+
+function getFilteredCards(){
+  return Array.from(document.querySelectorAll('#nlGrid .nlc')).filter(function(c){
+    var categories = (c.dataset.cat || '').split(/\s+/);
+    var matchesCategory = activeCat === 'all' || categories.indexOf(activeCat) !== -1;
+    var query = articleSearch.value.trim().toLocaleLowerCase();
+    var searchableText = c.textContent.toLocaleLowerCase();
+    return matchesCategory && (!query || searchableText.indexOf(query) !== -1);
+  });
+}
+
+function syncSearchUrl(){
+  var params = new URLSearchParams(window.location.search);
+  var query = articleSearch.value.trim();
+  if(query) params.set('q', query);
+  else params.delete('q');
+  var search = params.toString();
+  window.history.replaceState(null, '', window.location.pathname + (search ? '?' + search : '') + window.location.hash);
+}
+
+function renderPage(shouldScroll){
+  var filtered = getFilteredCards();
+  var total = filtered.length;
+  var totalPages = Math.max(1, Math.ceil(total / CARDS_PER_PAGE));
+  if(currentPage > totalPages) currentPage = 1;
+
+  var start = (currentPage-1)*CARDS_PER_PAGE;
+  var end   = start + CARDS_PER_PAGE;
+
+  // Hide all
+  document.querySelectorAll('#nlGrid .nlc').forEach(function(c){ c.style.display='none'; });
+  // Show filtered page slice
+  filtered.forEach(function(c, i){
+    c.style.display = (i >= start && i < end) ? 'flex' : 'none';
+  });
+
+  // No results
+  document.getElementById('noResults').style.display = total === 0 ? 'block' : 'none';
+  resultCount.textContent = total + (total === 1 ? ' article found' : ' articles found');
+  clearArticleSearch.style.display = articleSearch.value ? 'flex' : 'none';
+
+  // Pagination
+  buildPagination(totalPages);
+  document.getElementById('pagination').style.display = totalPages > 1 ? 'flex' : 'none';
+
+  // Update page title + breadcrumb
+  var label = activeCat === 'all' ? 'Latest News' :
+    activeCat.charAt(0).toUpperCase() + activeCat.slice(1) + ' News';
+  document.getElementById('pageTitle').textContent = label;
+  document.getElementById('breadcrumbLabel').textContent = label;
+
+  // Scroll to top of grid
+  var hero = document.querySelector('.nl-hero');
+  if(shouldScroll && hero) hero.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function buildPagination(totalPages){
+  var pg = document.getElementById('pagination');
+  pg.innerHTML = '';
+
+  // Prev
+  var prev = document.createElement('button');
+  prev.className = 'nl-pg-btn prev-next';
+  prev.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Prev';
+  prev.disabled = currentPage === 1;
+  prev.addEventListener('click', function(){ if(currentPage>1){ currentPage--; renderPage(true); } });
+  pg.appendChild(prev);
+
+  for(var i=1; i<=totalPages; i++){
+    (function(p){
+      var btn = document.createElement('button');
+      btn.className = 'nl-pg-btn' + (p===currentPage ? ' active' : '');
+      btn.textContent = p;
+      btn.addEventListener('click', function(){ currentPage=p; renderPage(true); });
+      pg.appendChild(btn);
+    })(i);
+  }
+
+  // Next
+  var next = document.createElement('button');
+  next.className = 'nl-pg-btn prev-next';
+  next.innerHTML = 'Next <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+  next.disabled = currentPage === totalPages;
+  next.addEventListener('click', function(){ if(currentPage<totalPages){ currentPage++; renderPage(true); } });
+  pg.appendChild(next);
+}
+
+// Category filter click
+document.getElementById('catFilter').addEventListener('click', function(e){
+  var btn = e.target.closest('.nl-cat-btn');
+  if(!btn) return;
+  document.querySelectorAll('.nl-cat-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  activeCat = btn.dataset.cat;
+  currentPage = 1;
+  renderPage(true);
+});
+
+articleSearch.addEventListener('input', function(){
+  currentPage = 1;
+  syncSearchUrl();
+  renderPage();
+});
+
+clearArticleSearch.addEventListener('click', function(){
+  articleSearch.value = '';
+  currentPage = 1;
+  syncSearchUrl();
+  renderPage();
+  articleSearch.focus();
+});
+
+// Init from URL
+activeCat = initCat;
+if(initCat !== 'all'){
+  document.querySelectorAll('.nl-cat-btn').forEach(function(b){ b.classList.remove('active'); });
+  var targetBtn = document.querySelector('.nl-cat-btn[data-cat="'+initCat+'"]');
+  if(targetBtn) targetBtn.classList.add('active');
+}
+renderPage();
+</script>
+</body>
+</html>

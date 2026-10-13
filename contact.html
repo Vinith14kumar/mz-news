@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="icon" href="assets/favicon.ico" sizes="any" />
+      <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+      <link rel="manifest" href="assets/site.webmanifest" />
+    <meta name="description" content="Contact MZ News &amp; Article with story tips, correction requests, partnership enquiries or general feedback." />
+    <meta name="keywords" content="contact MZ News, news tip, correction request, news partnership" />
+    <meta name="author" content="MZ News &amp; Article" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0b1e5b" />
+    <link rel="canonical" href="contact.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MZ News &amp; Article" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:title" content="Contact Us — MZ News &amp; Article" />
+    <meta property="og:description" content="Send a story tip, correction request, partnership enquiry or feedback to MZ News &amp; Article." />
+    <meta property="og:url" content="contact.html" />
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta property="og:image:alt" content="MZ News &amp; Article multilingual news identity" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact Us — MZ News &amp; Article" />
+    <meta name="twitter:description" content="Send a story tip, correction request, partnership enquiry or feedback to MZ News &amp; Article." />
+    <meta name="twitter:image" content="assets/og-image.png" />
+  <title>Contact Us — MZ News &amp; Article</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/company-pages.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="info-page">
+  <header class="info-header"><div class="container info-header-inner">
+    <a class="info-brand" href="index.html"><img src="Logo.png" alt="MZ News logo" /><span class="info-brand-copy"><span class="info-brand-name">MZ NEWS &amp; ARTICLE</span><span class="info-brand-tagline">Truth · Trust · Together</span></span></a>
+    <nav class="info-header-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="news-list.html">Latest News</a><a class="info-header-cta" href="contact.html" aria-current="page">Contact</a></nav>
+  </div></header>
+  <section class="info-hero"><div class="container info-hero-inner"><span class="info-eyebrow">COMPANY / GET IN TOUCH</span><h1>Contact Us</h1><p>Send a story tip, flag a correction or start a partnership conversation.</p></div></section>
+  <main class="info-main"><div class="container">
+    <nav class="info-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></nav>
+    <div class="info-layout">
+      <aside class="info-sidebar"><p class="info-sidebar-title">COMPANY</p><nav class="info-page-nav" aria-label="Company pages">
+        <a href="about.html">About MZ News</a><a href="team.html">Our Team</a><a href="editorial-policy.html">Editorial Policy</a><a href="advertise.html">Advertise</a><a href="contact.html" aria-current="page">Contact</a><a href="privacy-policy.html">Privacy</a><a href="terms-of-use.html">Terms</a>
+      </nav></aside>
+      <article class="info-article">
+        <p class="info-lead">Choose a topic and prepare a message for your email app. This static demo has no connected newsroom inbox, so you will need to add the official recipient address before sending.</p>
+        <section class="info-section"><h2>What to include</h2><ul><li><strong>Story tip:</strong> share the location, date and source material.</li><li><strong>Correction:</strong> include the article link and the specific detail that needs review.</li><li><strong>Partnership:</strong> include your organization, campaign goal and preferred language.</li></ul></section>
+        <section class="info-section"><h2>Prepare a message</h2>
+          <form class="info-contact-form" id="contactDraftForm">
+            <div class="info-form-row">
+              <label>Your name<input name="name" autocomplete="name" required /></label>
+              <label>Your email<input name="email" type="email" autocomplete="email" required /></label>
+            </div>
+            <label>Topic<select name="topic"><option>Story tip</option><option>Correction request</option><option>Advertising or partnership</option><option>General enquiry</option></select></label>
+            <label>Message<textarea name="message" required></textarea></label>
+            <button class="info-submit" type="submit">Copy message</button>
+            <p class="info-form-status" id="contactDraftStatus" aria-live="polite"></p>
+          </form>
+          <div class="info-callout">Your message stays in this browser until you copy it. It is not sent or stored by MZ News.</div>
+        </section>
+      </article>
+    </div>
+  </div></main>
+  <footer class="info-footer"><div class="container info-footer-inner"><p>&copy; 2026 MZ News &amp; Article</p><nav class="info-footer-links" aria-label="Company links"><a href="about.html">About</a><a href="editorial-policy.html">Editorial Policy</a><a href="advertise.html">Advertise</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy</a><a href="terms-of-use.html">Terms</a></nav></div></footer>
+  <script>
+    document.getElementById('contactDraftForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var form = new FormData(event.currentTarget);
+      var message = [
+        'To: MZ News & Article newsroom (add the official recipient before sending)',
+        'From: ' + form.get('name') + ' <' + form.get('email') + '>',
+        'Topic: ' + form.get('topic'),
+        '',
+        form.get('message')
+      ].join('\n');
+      var status = document.getElementById('contactDraftStatus');
+      function copied() { status.textContent = 'Message copied. Paste it into your email app and add the newsroom recipient.'; }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(message).then(copied).catch(function () { status.textContent = 'Copy failed. Please select and copy your message manually.'; });
+      } else {
+        var draft = document.createElement('textarea');
+        draft.value = message;
+        draft.style.position = 'fixed';
+        draft.style.opacity = '0';
+        document.body.appendChild(draft);
+        draft.select();
+        var didCopy = document.execCommand('copy');
+        document.body.removeChild(draft);
+        status.textContent = didCopy ? 'Message copied. Paste it into your email app and add the newsroom recipient.' : 'Copy failed. Please select and copy your message manually.';
+      }
+    });
+  </script>
+</body>
+  <script src="js/company-shell.js"></script>
+  <script src="js/script.js"></script>
+</html>

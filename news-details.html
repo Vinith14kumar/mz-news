@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="icon" href="assets/favicon.ico" sizes="any" />
+      <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+      <link rel="manifest" href="assets/site.webmanifest" />
+    <meta name="description" content="Read a detailed report on new AI technology, its capabilities and the changes it may bring to industries around the world." />
+    <meta name="keywords" content="AI news, artificial intelligence, technology news, global technology, MZ News" />
+    <meta name="author" content="MZ News &amp; Article" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0b1e5b" />
+    <link rel="canonical" href="news-details.html?id=1" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="MZ News &amp; Article" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:title" content="AI Model to Reshape Global Tech — MZ News &amp; Article" />
+    <meta property="og:description" content="Read a detailed report on new AI technology, its capabilities and the changes it may bring to industries around the world." />
+    <meta property="og:url" content="news-details.html?id=1" />
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta property="og:image:alt" content="MZ News &amp; Article multilingual news identity" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Model to Reshape Global Tech — MZ News &amp; Article" />
+    <meta name="twitter:description" content="Read a detailed report on new AI technology, its capabilities and the changes it may bring to industries around the world." />
+    <meta name="twitter:image" content="assets/og-image.png" />
+  <title>AI Model to Reshape Global Tech — MZ News &amp; Article</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', 'Segoe UI', sans-serif; }
+
+    /* ── Article Page Layout ── */
+    .art-page { padding: 32px 0 60px; background: #f1f5f9; }
+    .art-layout { display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: start; }
+
+    /* ── Breadcrumb ── */
+    .art-breadcrumb {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12.5px; color: #64748b; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .art-breadcrumb a { color: #2563eb; transition: color .18s; }
+    .art-breadcrumb a:hover { color: #1d4ed8; }
+    .art-breadcrumb svg { color: #cbd5e1; flex-shrink: 0; }
+
+    /* ── Main article card ── */
+    .art-card {
+      background: #fff; border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 12px rgba(37,99,235,0.07);
+      overflow: hidden;
+    }
+
+    /* Featured image */
+    .art-feat-img {
+      width: 100%; height: 420px; object-fit: cover;
+      display: block; background: #e2e8f0;
+    }
+
+    /* Article head */
+    .art-head { padding: 28px 32px 20px; border-bottom: 1px solid #f1f5f9; }
+    .art-meta-top { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+
+    .art-cat-badge {
+      padding: 3px 12px; border-radius: 20px;
+      font-size: 10.5px; font-weight: 700; letter-spacing: .5px;
+      text-transform: uppercase; color: #fff; background: #7c3aed;
+    }
+    .art-cat-badge.politics   { background: #dc2626; }
+    .art-cat-badge.business   { background: #d97706; }
+    .art-cat-badge.sports     { background: #16a34a; }
+    .art-cat-badge.world      { background: #0891b2; }
+    .art-cat-badge.health     { background: #0d9488; }
+    .art-cat-badge.entertainment { background: #db2777; }
+    .art-cat-badge.science    { background: #059669; }
+
+    .art-lang-badge {
+      padding: 3px 10px; border-radius: 20px;
+      font-size: 10.5px; font-weight: 700;
+      background: #dbeafe; color: #1e40af;
+    }
+    .art-trending-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: 20px;
+      font-size: 10.5px; font-weight: 700;
+      background: #fef3c7; color: #92400e;
+    }
+    .art-trending-badge svg { width: 11px; height: 11px; }
+
+    .art-title {
+      font-size: 28px; font-weight: 900; color: #0f172a;
+      line-height: 1.3; margin-bottom: 18px; letter-spacing: -.3px;
+    }
+
+    .art-info-row {
+      display: flex; align-items: center; gap: 20px;
+      flex-wrap: wrap; padding: 14px 0 0;
+      border-top: 1px solid #f1f5f9;
+    }
+    .art-info-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12.5px; color: #64748b;
+    }
+    .art-info-item svg { width: 14px; height: 14px; color: #2563eb; flex-shrink: 0; }
+    .art-info-item strong { color: #0f172a; font-weight: 700; }
+
+    /* Article body */
+    .art-body { padding: 28px 32px; }
+    .art-body p {
+      font-size: 15.5px; color: #374151; line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .art-body h2 {
+      font-size: 21px; font-weight: 800; color: #1d4ed8;
+      margin: 28px 0 12px; padding-left: 12px;
+      border-left: 4px solid #2563eb;
+    }
+    .art-body h3 {
+      font-size: 17px; font-weight: 700; color: #0f172a;
+      margin: 22px 0 10px;
+    }
+
+    /* Pull quote */
+    .art-quote {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border-left: 4px solid #2563eb;
+      border-radius: 0 12px 12px 0;
+      padding: 18px 22px; margin: 24px 0;
+    }
+    .art-quote p {
+      font-size: 15.5px; font-style: italic; font-weight: 700;
+      color: #1d4ed8; margin: 0; line-height: 1.65;
+    }
+    .art-quote cite {
+      display: block; font-size: 12px; color: #64748b;
+      font-style: normal; margin-top: 8px; font-weight: 600;
+    }
+
+    /* Key points box */
+    .art-keypoints {
+      background: #f8faff; border: 1px solid #dbeafe;
+      border-radius: 12px; padding: 18px 22px; margin: 24px 0;
+    }
+    .art-keypoints h4 {
+      font-size: 13px; font-weight: 800; color: #1d4ed8;
+      text-transform: uppercase; letter-spacing: .6px; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .art-keypoints ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .art-keypoints li {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 13.5px; color: #374151; line-height: 1.5;
+    }
+    .art-keypoints li::before {
+      content: '✓'; color: #2563eb; font-weight: 900;
+      font-size: 13px; flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* Share bar */
+    .art-share {
+      display: flex; align-items: center; gap: 10px;
+      padding: 18px 32px; border-top: 1px solid #f1f5f9;
+      background: #f8faff; flex-wrap: wrap;
+    }
+    .art-share-label { font-size: 13px; font-weight: 700; color: #0f172a; }
+    .art-share-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: 20px;
+      font-size: 12.5px; font-weight: 700; color: #fff;
+      border: none; cursor: pointer; transition: opacity .2s, transform .15s;
+    }
+    .art-share-btn:hover { opacity: .88; transform: translateY(-1px); }
+    .art-share-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .art-share-btn.fb   { background: #1877f2; }
+    .art-share-btn.tw   { background: #1da1f2; }
+    .art-share-btn.wa   { background: #25d366; }
+    .art-share-btn.copy { background: #64748b; }
+
+    /* ── Related news ── */
+    .art-related { padding: 32px 0 0; }
+    .art-related-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .art-related-title {
+      font-size: 17px; font-weight: 800; color: #0f172a;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .art-related-title svg { color: #2563eb; }
+    .art-view-all {
+      font-size: 12.5px; font-weight: 600; color: #2563eb;
+      display: flex; align-items: center; gap: 4px; transition: gap .18s;
+    }
+    .art-view-all:hover { gap: 7px; }
+
+    .art-related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .arc {
+      background: #fff; border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.06);
+      overflow: hidden; cursor: pointer;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .arc:hover { box-shadow: 0 8px 24px rgba(37,99,235,0.13); transform: translateY(-2px); }
+    .arc-img { width: 100%; height: 140px; object-fit: cover; display: block; background: #e2e8f0; }
+    .arc-body { padding: 12px 14px; }
+    .arc-badge {
+      display: inline-block; padding: 2px 9px; border-radius: 20px;
+      font-size: 10px; font-weight: 700; letter-spacing: .4px;
+      text-transform: uppercase; color: #fff; margin-bottom: 7px;
+    }
+    .arc-badge.technology { background: #7c3aed; }
+    .arc-badge.world      { background: #0891b2; }
+    .arc-badge.sports     { background: #16a34a; }
+    .arc-badge.politics   { background: #dc2626; }
+    .arc-badge.business   { background: #d97706; }
+    .arc-badge.health     { background: #0d9488; }
+    .arc-title {
+      font-size: 13px; font-weight: 700; color: #0f172a; line-height: 1.45;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      margin-bottom: 7px; transition: color .18s;
+    }
+    .arc:hover .arc-title { color: #2563eb; }
+    .arc-time { display: flex; align-items: center; gap: 3px; font-size: 11px; color: #94a3b8; }
+    .arc-time svg { width: 11px; height: 11px; }
+
+    /* ── Sidebar ── */
+    .art-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+    .asc {
+      background: #fff; border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.06);
+      overflow: hidden;
+    }
+    .asc-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 16px 11px;
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+    }
+    .asc-head-title { display: flex; align-items: center; gap: 7px; font-size: 13.5px; font-weight: 800; color: #fff; }
+    .asc-head-title svg { color: #fbbf24; }
+    .asc-view-all { font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,.8); display: flex; align-items: center; gap: 4px; }
+    .asc-view-all:hover { color: #fff; }
+
+    .asc-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-bottom: 1px solid #f1f5f9;
+      cursor: pointer; transition: background .15s; text-decoration: none;
+    }
+    .asc-item:last-child { border-bottom: none; }
+    .asc-item:hover { background: #f8faff; }
+    .asc-num { font-size: 17px; font-weight: 900; color: #2563eb; min-width: 20px; flex-shrink: 0; }
+    .asc-item:nth-child(1) .asc-num { color: #0d2266; }
+    .asc-item:nth-child(2) .asc-num { color: #1d4ed8; }
+    .asc-item:nth-child(3) .asc-num { color: #2563eb; }
+    .asc-item:nth-child(4) .asc-num { color: #3b82f6; }
+    .asc-item:nth-child(5) .asc-num { color: #3b82f6; }
+    .asc-thumb { width: 58px; height: 44px; border-radius: 8px; object-fit: cover; flex-shrink: 0; background: #e2e8f0; }
+    .asc-body { flex: 1; min-width: 0; }
+    .asc-title { font-size: 12px; font-weight: 700; color: #0f172a; line-height: 1.4;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 3px; }
+    .asc-time { display: flex; align-items: center; gap: 3px; font-size: 10.5px; color: #94a3b8; }
+    .asc-time svg { width: 10px; height: 10px; }
+
+    /* Responsive */
+    @media(max-width:1024px){ .art-layout{ grid-template-columns:1fr; } }
+    @media(max-width:768px){
+      .art-head { padding: 20px; }
+      .art-body { padding: 20px; }
+      .art-share { padding: 14px 20px; }
+      .art-title { font-size: 22px; }
+      .art-related-grid { grid-template-columns: 1fr 1fr; }
+      .art-feat-img { height: 260px; }
+    }
+    @media(max-width:540px){
+      .art-related-grid { grid-template-columns: 1fr; }
+      .art-share-btn span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ═══════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <img src="Logo.png" alt="MZ News Logo" />
+      <div class="navbar-logo-text">
+        <span class="brand-name">MZ NEWS &amp; ARTICLE</span>
+        <span class="brand-tagline">Truth · Trust · Together | Your Trusted Global News Hub</span>
+      </div>
+    </a>
+    <ul class="navbar-nav" id="navbarNav">
+      <li><a href="index.html" class="nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a></li>
+      <li><a href="news-list.html" class="nav-link active">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>Latest News</a></li>
+      <li><a href="news-list.html?cat=politics" class="nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="12" x2="2" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>Politics</a></li>
+      <li><a href="news-list.html?cat=business" class="nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>Business</a></li>
+      <li><a href="news-list.html?cat=technology" class="nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Technology</a></li>
+      <li class="nav-more">
+        <span style="display:flex;align-items:center;gap:5px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>More
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+        <div class="nav-more-dropdown">
+          <a href="news-list.html?cat=sports"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/></svg>Sports</a>
+          <a href="news-list.html?cat=entertainment"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Entertainment</a>
+          <a href="news-list.html?cat=world"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>World</a>
+        </div>
+      </li>
+    </ul>
+    <div class="navbar-actions" id="navbarActions">
+      <a href="login.html" class="btn-login">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Login</a>
+      <a href="signup.html" class="btn-register">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Register / Sign Up</a>
+      <button class="btn-search" id="searchToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="search-bar" id="searchBar">
+    <div class="search-bar-inner">
+      <input type="text" placeholder="Search news, articles, topics…" id="searchInput" />
+      <button class="search-submit">Search</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ ARTICLE PAGE ══════════════════════════════════════════ -->
+<section class="art-page">
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <nav class="art-breadcrumb">
+      <a href="index.html">Home</a>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="news-list.html">Latest News</a>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="news-list.html?cat=technology" id="bcCat">Technology</a>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>New AI Model Set to Change the Future of Technology</span>
+    </nav>
+
+    <div class="art-layout">
+
+      <!-- ── MAIN ARTICLE ── -->
+      <div>
+        <article class="art-card">
+
+          <!-- Featured Image -->
+          <img class="art-feat-img" id="artFeatImg" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=85" alt="AI Technology" />
+
+          <!-- Head -->
+          <div class="art-head">
+            <div class="art-meta-top">
+              <span class="art-cat-badge" id="artCatBadge">Technology</span>
+              <span class="art-lang-badge" id="artLangBadge">English</span>
+              <span class="art-trending-badge" id="artTrendBadge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                Trending
+              </span>
+            </div>
+            <h1 class="art-title" id="artTitle">New AI Model Set to Change the Future of Technology and Human Productivity Worldwide</h1>
+            <div class="art-info-row">
+              <div class="art-info-item" id="artDate">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Published: <strong>September 26, 2026</strong>
+              </div>
+              <div class="art-info-item" id="artUpdated">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Updated: <strong>6 hours ago</strong>
+              </div>
+              <div class="art-info-item" id="artAuthor">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                By <strong>MZ News Desk</strong>
+              </div>
+              <div class="art-info-item" id="artRead">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <strong>5 min</strong> read
+              </div>
+            </div>
+          </div>
+
+          <!-- Body -->
+          <div class="art-body" id="artBody">
+
+            <p>In a landmark development for the global technology industry, leading artificial intelligence research companies have jointly unveiled a new generation of AI models that promise to fundamentally reshape how humans interact with machines, process information, and conduct everyday work. The announcement, made at the International AI Summit held in Bengaluru, drew immediate attention from industry leaders, policymakers, and researchers worldwide.</p>
+
+            <p>The new AI systems demonstrate unprecedented capabilities in natural language understanding, visual reasoning, and multi-step problem solving. Unlike earlier generations of AI, these models can maintain context over extended conversations, independently verify factual claims in real time, and generate highly nuanced responses tailored to individual users' needs and preferences.</p>
+
+            <!-- Key Points -->
+            <div class="art-keypoints">
+              <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                Key Highlights
+              </h4>
+              <ul>
+                <li>New AI models score above human-average on advanced mathematics, legal reasoning and medical diagnosis benchmarks</li>
+                <li>Significantly reduced hallucination rates compared to previous generation systems</li>
+                <li>Phased global rollout planned over 12 months, starting with enterprise customers</li>
+                <li>India rollout expected in Q1 2027 with regional language support including Tamil, Hindi and Telugu</li>
+              </ul>
+            </div>
+
+            <h2>What Makes This Generation Different?</h2>
+
+            <p>Previous AI models often struggled with consistency and accuracy over long interactions, frequently producing errors in complex reasoning tasks. The new models address these shortcomings through a combination of improved training methodologies, significantly larger and more diverse datasets, and architectural innovations that allow for deeper contextual awareness.</p>
+
+            <p>Researchers from multiple organisations confirmed that the new systems scored above human-average benchmarks across a range of standardised tests, including advanced mathematics, legal reasoning, medical diagnosis support, and creative writing. The models also show considerably reduced tendencies toward fabricating information — a persistent issue known as "hallucination" that plagued earlier AI generations.</p>
+
+            <!-- Pull Quote -->
+            <div class="art-quote">
+              <p>"This is not merely an incremental improvement. We are witnessing a qualitative shift in what AI systems can reliably accomplish. The implications for education, healthcare, and scientific research are profound and immediate."</p>
+              <cite>— Dr. Ananya Krishnan, Director of AI Research, IIT Madras</cite>
+            </div>
+
+            <h2>Impact on the Indian Technology Sector</h2>
+
+            <p>For India, the announcement carries particular significance. The country's rapidly growing technology sector, which employs over five million professionals and contributes approximately 8% of GDP, stands to be one of the primary beneficiaries of these advances. Several Indian software companies have already announced pilot programmes to integrate the new AI tools into their product and service offerings.</p>
+
+            <p>Startups in Bengaluru, Hyderabad, and Chennai have reported increased investor interest following the summit, with multiple venture capital firms indicating plans to double their AI-focused portfolios in the coming financial year. The government's National AI Mission is also expected to align closely with these developments.</p>
+
+            <h3>Global Competition and Regulatory Concerns</h3>
+
+            <p>While the technological achievements have been widely celebrated, the announcement has also intensified discussions around the regulation of powerful AI systems. Several governments have signalled intentions to fast-track legislative frameworks governing the deployment of advanced AI in critical sectors including healthcare, finance, and public administration.</p>
+
+            <p>The companies involved have announced a phased global rollout over the coming twelve months, beginning with select enterprise customers and research institutions before progressively becoming available to general consumers.</p>
+
+          </div>
+
+          <!-- Share Bar -->
+          <div class="art-share">
+            <span class="art-share-label">Share:</span>
+            <button class="art-share-btn fb">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <span>Facebook</span>
+            </button>
+            <button class="art-share-btn tw">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+              <span>Twitter</span>
+            </button>
+            <button class="art-share-btn wa">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span>WhatsApp</span>
+            </button>
+            <button class="art-share-btn copy" id="copyLinkBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              <span>Copy Link</span>
+            </button>
+          </div>
+
+        </article>
+
+        <!-- Related News -->
+        <div class="art-related">
+          <div class="art-related-header">
+            <h2 class="art-related-title">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              Related Articles
+            </h2>
+            <a href="news-list.html" class="art-view-all">
+              View All
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+          <div class="art-related-grid" id="relGrid">
+            <a href="news-details.html" class="arc">
+              <img class="arc-img" src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=500&q=80" alt="ISRO" />
+              <div class="arc-body">
+                <span class="arc-badge technology">Science</span>
+                <div class="arc-title">ISRO Successfully Launches New Earth Observation Satellite Mission</div>
+                <div class="arc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 hours ago</div>
+              </div>
+            </a>
+            <a href="news-details.html" class="arc">
+              <img class="arc-img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500&q=80" alt="Climate" />
+              <div class="arc-body">
+                <span class="arc-badge world">World</span>
+                <div class="arc-title">International Climate Summit Reaches Historic Net-Zero Agreement</div>
+                <div class="arc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 day ago</div>
+              </div>
+            </a>
+            <a href="news-details.html" class="arc">
+              <img class="arc-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&q=80" alt="Health" />
+              <div class="arc-body">
+                <span class="arc-badge health">Health</span>
+                <div class="arc-title">Breakthrough Cancer Research Offers New Hope for Early Detection</div>
+                <div class="arc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>14 hours ago</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /main col -->
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="art-sidebar">
+
+        <!-- Trending -->
+        <div class="asc">
+          <div class="asc-head">
+            <div class="asc-head-title">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              Trending Now
+            </div>
+            <a href="news-list.html" class="asc-view-all">View All <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <div>
+            <a href="news-details.html" class="asc-item">
+              <span class="asc-num">1</span>
+              <img class="asc-thumb" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=120&q=75" alt="Cyclone" />
+              <div class="asc-body">
+                <div class="asc-title">Cyclone Alert Issued in Several Coastal Districts</div>
+                <div class="asc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3 hours ago</div>
+              </div>
+            </a>
+            <a href="news-details.html" class="asc-item">
+              <span class="asc-num">2</span>
+              <img class="asc-thumb" src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=120&q=75" alt="Gold" />
+              <div class="asc-body">
+                <div class="asc-title">Gold Prices Rise Again in Domestic Markets</div>
+                <div class="asc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 hours ago</div>
+              </div>
+            </a>
+            <a href="news-details.html" class="asc-item">
+              <span class="asc-num">3</span>
+              <img class="asc-thumb" src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=120&q=75" alt="Cinema" />
+              <div class="asc-body">
+                <div class="asc-title">New Tamil Movie Creates Blockbuster Records</div>
+                <div class="asc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 hours ago</div>
+              </div>
+            </a>
+            <a href="news-details.html" class="asc-item">
+              <span class="asc-num">4</span>
+              <img class="asc-thumb" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=120&q=75" alt="iPhone" />
+              <div class="asc-body">
+                <div class="asc-title">Apple Unveils Latest iPhone with AI Features</div>
+                <div class="asc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 hours ago</div>
+              </div>
+            </a>
+            <a href="news-details.html" class="asc-item">
+              <span class="asc-num">5</span>
+              <img class="asc-thumb" src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=120&q=75" alt="Cricket" />
+              <div class="asc-body">
+                <div class="asc-title">India's Young Star Shines with Superb Knock</div>
+                <div class="asc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>12 hours ago</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- More Technology -->
+        <div class="asc">
+          <div class="asc-head">
+            <div class="asc-head-title">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+              More Technology
+            </div>
+            <a href="news-list.html?cat=technology" class="asc-view-all">View All</a>
+          </div>
+          <div>
+            <a href="news-details.html" class="asc-item">
+              <img class="asc-thumb" src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=120&q=75" alt="ISRO" />
+              <div class="asc-body">
+                <div class="asc-title">ISRO Satellite Launch Boosts India's Space Research Capabilities</div>
+                <div class="asc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 hours ago</div>
+              </div>
+            </a>
+            <a href="news-details.html" class="asc-item">
+              <img class="asc-thumb" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=120&q=75" alt="iPhone AI" />
+              <div class="asc-body">
+                <div class="asc-title">Apple Unveils Latest iPhone with Advanced AI Features</div>
+                <div class="asc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 hours ago</div>
+              </div>
+            </a>
+            <a href="news-details.html" class="asc-item">
+              <img class="asc-thumb" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=120&q=75" alt="5G" />
+              <div class="asc-body">
+                <div class="asc-title">5G Network Expansion Reaches Tier-2 Cities Across India</div>
+                <div class="asc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 day ago</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </aside>
+    </div><!-- /art-layout -->
+  </div><!-- /container -->
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-accent-bar"></div>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-logo-row">
+            <img src="Logo.png" alt="MZ News" class="footer-logo-img" />
+            <div><div class="footer-brand-name">MZ NEWS &amp; ARTICLE</div><div class="footer-brand-tagline">Truth · Trust · Together</div></div>
+          </div>
+          <p class="footer-about-text">Your trusted global news hub delivering breaking news, in-depth articles,<br>and exclusive stories across 5+ languages.</p>
+          <div class="footer-socials">
+          <div class="footer-links-right">
+          <div class="footer-links-col">
+            <div class="footer-col-header"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Quick Links</div>
+            <ul class="footer-links-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="news-list.html">Latest News</a></li>
+              <li><a href="news-list.html?cat=politics">Politics</a></li>
+              <li><a href="news-list.html?cat=business">Business</a></li>
+              <li><a href="news-list.html?cat=technology">Technology</a></li>
+              <li><a href="news-list.html?cat=sports">Sports</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <div class="footer-col-header"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Languages</div>
+            <ul class="footer-links-list">
+              <li><a href="news-list.html?lang=tamil"><span class="fl">🔴</span> Tamil — தமிழ்</a></li>
+              <li><a href="news-list.html?lang=english"><span class="fl">🔵</span> English News</a></li>
+              <li><a href="news-list.html?lang=hindi"><span class="fl">🟡</span> Hindi — हिंदी</a></li>
+              <li><a href="news-list.html?lang=telugu"><span class="fl">🟢</span> Telugu — తెలుగు</a></li>
+              <li><a href="news-list.html?lang=malayalam"><span class="fl">🟣</span> Malayalam</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <div class="footer-col-header"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Company</div>
+            <ul class="footer-links-list">
+              <li><a href="about.html">About MZ News</a></li>
+              <li><a href="team.html">Our Team</a></li>
+              <li><a href="editorial-policy.html">Editorial Policy</a></li>
+              <li><a href="advertise.html">Advertise With Us</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms-of-use.html">Terms of Use</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom-bar">
+    <div class="container footer-bottom-inner">
+      <p class="footer-copy">&copy; 2026 MZ News &amp; Article. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy-policy.html">Privacy Policy</a><span class="footer-dot">·</span>
+        <a href="terms-of-use.html">Terms of Use</a><span class="footer-dot">·</span>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════
+   ARTICLE DATA — 12 articles, each with unique content
+═══════════════════════════════════════════════════════ */
+var ARTICLES = {
+  1: {
+    id: 1,
+    cat: 'Technology', catClass: 'technology',
+    lang: 'English', langClass: 'english',
+    img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=85',
+    imgAlt: 'AI Technology',
+    title: 'New AI Model Set to Change the Future of Global Technology Industry',
+    date: 'September 26, 2026', updated: '6 hours ago',
+    author: 'MZ News Desk', readTime: '5 min',
+    trending: true,
+    body: `<p>In a landmark development for the global technology industry, leading artificial intelligence research companies have jointly unveiled a new generation of AI models that promise to fundamentally reshape how humans interact with machines, process information, and conduct everyday work. The announcement, made at the International AI Summit held in Bengaluru, drew immediate attention from industry leaders, policymakers, and researchers worldwide.</p>
+<p>The new AI systems demonstrate unprecedented capabilities in natural language understanding, visual reasoning, and multi-step problem solving. Unlike earlier generations, these models can maintain context over extended conversations, independently verify factual claims in real time, and generate highly nuanced responses tailored to individual users' needs.</p>
+<h2>What Makes This Generation Different?</h2>
+<p>Previous AI models often struggled with consistency and accuracy over long interactions. The new models address these shortcomings through improved training methodologies, significantly larger datasets, and architectural innovations that allow for deeper contextual awareness.</p>
+<div class="art-quote"><p>"This is not merely an incremental improvement. We are witnessing a qualitative shift in what AI systems can reliably accomplish."</p><cite>— Dr. Ananya Krishnan, Director of AI Research, IIT Madras</cite></div>
+<h2>Impact on Indian Technology Sector</h2>
+<p>For India, the announcement carries particular significance. The country's rapidly growing technology sector, which employs over five million professionals and contributes approximately 8% of GDP, stands to be one of the primary beneficiaries. Several Indian software companies have already announced pilot programmes to integrate the new AI tools into their product and service offerings.</p>
+<p>The companies involved have announced a phased global rollout over the coming twelve months. India rollout is expected in Q1 2027, with regional language support including Tamil, Hindi, Telugu and Malayalam built in from launch.</p>`
+  },
+  2: {
+    id: 2,
+    cat: 'Politics', catClass: 'politics',
+    lang: 'Hindi', langClass: 'hindi',
+    img: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1200&q=85',
+    imgAlt: 'Government Politics',
+    title: 'सरकार ने सभी राज्यों में नई कल्याण योजनाएं शुरू करने की घोषणा की',
+    date: 'सितंबर 26, 2026', updated: '4 घंटे पहले',
+    author: 'MZ समाचार डेस्क', readTime: '4 मिनट',
+    trending: false,
+    body: `<p>केंद्र सरकार ने देश के सभी राज्यों में एक साथ नई कल्याण योजनाओं की शुरुआत की है। इन योजनाओं में शिक्षा, स्वास्थ्य और ग्रामीण विकास को प्राथमिकता दी गई है। प्रधानमंत्री ने इन योजनाओं की घोषणा करते हुए कहा कि इससे देशभर के करोड़ों नागरिकों को सीधा लाभ मिलेगा।</p>
+<h2>योजनाओं के मुख्य बिंदु</h2>
+<p>नई योजनाओं में गरीब परिवारों को मुफ्त स्वास्थ्य सेवाएं, कौशल विकास कार्यक्रम और महिला सशक्तिकरण के लिए विशेष प्रावधान शामिल हैं। सरकार ने इन योजनाओं के लिए अगले पाँच वर्षों में 2 लाख करोड़ रुपये के बजट का प्रावधान किया है।</p>
+<div class="art-quote"><p>"यह योजनाएं हमारे समाज के सबसे कमजोर वर्गों के जीवन को बेहतर बनाने के लिए प्रतिबद्ध हैं।"</p><cite>— प्रधानमंत्री, भारत सरकार</cite></div>
+<p>विशेषज्ञों का मानना है कि इन योजनाओं से ग्रामीण क्षेत्रों में बुनियादी ढांचे का विकास होगा और रोजगार के नए अवसर पैदा होंगे। राज्य सरकारों को इन योजनाओं को लागू करने के लिए केंद्र से पूरा सहयोग मिलेगा।</p>`
+  },
+  3: {
+    id: 3,
+    cat: 'Business', catClass: 'business',
+    lang: 'Tamil', langClass: 'tamil',
+    img: 'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=1200&q=85',
+    imgAlt: 'Gold Market',
+    title: 'தமிழ்நாட்டில் தங்கம் விலை சர்வகால உச்சத்தை தொட்டது',
+    date: 'செப்டம்பர் 26, 2026', updated: '8 மணி நேரம் முன்பு',
+    author: 'MZ செய்தி அலுவலகம்', readTime: '3 நிமிடம்',
+    trending: true,
+    body: `<p>பண்டிகை காலத்தில் தேவை அதிகரிப்பால் தமிழ்நாட்டில் தங்கம் விலை சர்வகால உச்சத்தை தொட்டுள்ளது. சென்னை, கோவை, மதுரை உள்ளிட்ட முக்கிய நகரங்களில் நகை கடைகளில் விற்பனை கணிசமாக உயர்ந்துள்ளது.</p>
+<h2>விலை உயர்வுக்கான காரணங்கள்</h2>
+<p>உலக சந்தையில் தங்கத்தின் தேவை அதிகரித்துள்ளது மற்றும் டாலருக்கு எதிரான ரூபாயின் மதிப்பு சரிவு ஆகியவை விலை உயர்வுக்கு முக்கிய காரணங்களாக உள்ளன. மேலும் புராண் விழாக்கள் மற்றும் திருமண சீசன் காரணமாக உள்நாட்டு தேவையும் கூடியுள்ளது.</p>
+<div class="art-quote"><p>"தங்கத்தின் விலை இந்த நிதி ஆண்டின் இறுதியில் மேலும் உயரலாம் என்று நிபுணர்கள் கணிக்கின்றனர்."</p><cite>— முன்னணி நிதி நிபுணர், சென்னை</cite></div>
+<p>தங்க முதலீட்டாளர்கள் இந்த சூழ்நிலையை சாதகமாக பயன்படுத்திக்கொள்கின்றனர். அரசு வங்கிகள் தங்கக் கடன்களுக்கான வட்டி விகிதங்களை மதிப்பாய்வு செய்யுமா என்று பொதுமக்கள் எதிர்பார்த்துக்கொண்டிருக்கின்றனர்.</p>`
+  },
+  4: {
+    id: 4,
+    cat: 'World', catClass: 'world',
+    lang: 'English', langClass: 'english',
+    img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200&q=85',
+    imgAlt: 'Climate Summit',
+    title: 'International Climate Summit Reaches Historic Net-Zero Agreement',
+    date: 'September 25, 2026', updated: '1 day ago',
+    author: 'MZ World Desk', readTime: '6 min',
+    trending: false,
+    body: `<p>World leaders gathered at the International Climate Summit have signed a landmark agreement committing to net-zero carbon emissions by 2040. The agreement, signed by 145 nations, represents the most ambitious climate commitment in history and is expected to reshape global energy, transportation, and industrial policies over the next two decades.</p>
+<h2>Key Commitments</h2>
+<p>Under the agreement, developed nations have pledged to reduce their carbon emissions by 60% before 2030, while developing nations will receive substantial financial and technical support to transition to renewable energy sources. A new international climate fund of $500 billion has been established to support these transitions.</p>
+<div class="art-quote"><p>"This agreement is not just a promise — it is a binding commitment backed by financial mechanisms and regular review processes that will hold nations accountable."</p><cite>— UN Secretary-General, International Climate Summit</cite></div>
+<p>India has committed to increasing its renewable energy capacity to 1,000 GW by 2035, with significant investments planned for solar, wind, and hydrogen energy sectors. The Indian government has described this as both a climate commitment and an economic opportunity that could create millions of green jobs.</p>`
+  },
+  5: {
+    id: 5,
+    cat: 'Sports', catClass: 'sports',
+    lang: 'Tamil', langClass: 'tamil',
+    img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200&q=85',
+    imgAlt: 'IPL Cricket',
+    title: 'சென்னை சூப்பர் கிங்ஸ் கடைசி பந்தில் ஐபிஎல் கோப்பை வென்றது',
+    date: 'செப்டம்பர் 26, 2026', updated: '3 மணி நேரம் முன்பு',
+    author: 'MZ விளையாட்டு பிரிவு', readTime: '4 நிமிடம்',
+    trending: true,
+    body: `<p>சென்னை சூப்பர் கிங்ஸ் இந்த ஆண்டின் ஐபிஎல் இறுதிப் போட்டியில் மிகவும் பரபரப்பான வெற்றியை கடைசி பந்தில் பதிவு செய்தது. மும்பை இண்டியன்ஸ் அணிக்கு எதிரான போட்டியில் 4 விக்கெட் வித்தியாசத்தில் வெற்றி பெற்று ஐபிஎல் கோப்பையை சிஎஸ்கே தொடர்ந்து வென்றது.</p>
+<h2>போட்டியின் முக்கிய தருணங்கள்</h2>
+<p>இறுதி ஓவரில் 18 ரன்கள் தேவைப்பட்ட நிலையில், ஒரு இளம் வீரர் அசத்தலான ஆட்டம் காட்டி அணியை வெற்றிக் கரைக்கு கொண்டு சென்றார். 45,000 ரசிகர்கள் நிறைந்த அரங்கில் நடைபெற்ற போட்டி கடைசி பந்து வரை மிகவும் சுவாரஸ்யமாக இருந்தது.</p>
+<div class="art-quote"><p>"இது எனது வாழ்க்கையின் மிக அழகான தருணம். அணி ஒன்றாக போராடி வெற்றி பெற்றோம்."</p><cite>— சென்னை சூப்பர் கிங்ஸ் கேப்டன்</cite></div>
+<p>வெற்றி பெற்ற சிஎஸ்கே அணிக்கு தமிழ்நாடு முதலமைச்சர் வாழ்த்துக்கள் தெரிவித்தார். அணி வீரர்களுக்கு சிறப்பு விருது வழங்கப்படும் என்றும் அவர் அறிவித்தார்.</p>`
+  },
+  6: {
+    id: 6,
+    cat: 'Science', catClass: 'science',
+    lang: 'English', langClass: 'english',
+    img: 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=1200&q=85',
+    imgAlt: 'ISRO Satellite Launch',
+    title: 'ISRO Successfully Launches New Earth Observation Satellite Mission',
+    date: 'September 26, 2026', updated: '2 hours ago',
+    author: 'MZ Science Desk', readTime: '5 min',
+    trending: true,
+    body: `<p>The Indian Space Research Organisation (ISRO) has successfully launched its latest Earth observation satellite from the Satish Dhawan Space Centre in Sriharikota. The satellite, designed to monitor weather patterns, agricultural zones, and natural disasters, lifted off aboard a PSLV-C rocket in perfect conditions.</p>
+<h2>Mission Objectives</h2>
+<p>The new satellite carries advanced optical and infrared sensors capable of capturing high-resolution images of Earth's surface with a revisit time of just 24 hours. This capability will significantly enhance India's disaster management response and agricultural monitoring programmes.</p>
+<div class="art-quote"><p>"This launch demonstrates ISRO's growing capability to deliver cost-effective, reliable space solutions that directly benefit millions of people on the ground."</p><cite>— ISRO Chairman, Sriharikota</cite></div>
+<p>The satellite is expected to have an operational life of seven years and will work in conjunction with India's existing constellation of remote sensing satellites. Scientists say the data collected will be shared with international partners as part of India's commitment to global cooperation in space science.</p>`
+  },
+  7: {
+    id: 7,
+    cat: 'Politics', catClass: 'politics',
+    lang: 'Tamil', langClass: 'tamil',
+    img: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1200&q=85',
+    imgAlt: 'Tamil Nadu Metro',
+    title: 'சென்னை புறநகர் பகுதிகளுக்கு புதிய மெட்ரோ ரயில் திட்டம் அறிவிப்பு',
+    date: 'செப்டம்பர் 26, 2026', updated: '1 மணி நேரம் முன்பு',
+    author: 'MZ செய்தி அலுவலகம்', readTime: '4 நிமிடம்',
+    trending: false,
+    body: `<p>தமிழ்நாடு முதலமைச்சர் சென்னை புறநகர் பகுதிகளை இணைக்கும் புதிய மெட்ரோ ரயில் திட்டத்தை அறிவித்தார். இந்த திட்டத்தின் மூலம் அம்பத்தூர், அவடி, தாம்பரம் உள்ளிட்ட பகுதிகள் நகரின் மையப் பகுதிகளுடன் நேரடியாக இணைக்கப்படும்.</p>
+<h2>திட்டத்தின் சிறப்புகள்</h2>
+<p>மொத்தம் 45 கிலோமீட்டர் நீட்டிக்கப்படும் இந்த திட்டத்தில் 32 புதிய நிலையங்கள் அமைக்கப்படும். திட்டத்தின் மொத்த செலவு 12,000 கோடி ரூபாயாக மதிப்பிடப்பட்டுள்ளது. 2029 ஆம் ஆண்டுக்குள் திட்டம் நிறைவடையும் என அரசு தெரிவித்துள்ளது.</p>
+<div class="art-quote"><p>"இந்த மெட்ரோ திட்டம் சென்னையின் போக்குவரத்து நெரிசலை 40% குறைக்கும் என்று நிபுணர்கள் கணிக்கின்றனர்."</p><cite>— சென்னை மெட்ரோ ரயில் நிறுவன இயக்குநர்</cite></div>
+<p>இந்த திட்டம் மத்திய அரசின் ஸ்மார்ட் சிட்டி திட்டத்துடன் இணைத்து செயல்படுத்தப்படும். நிர்மாண பணிகள் விரைவில் தொடங்கும் என்று அரசு தெரிவித்துள்ளது.</p>`
+  },
+  8: {
+    id: 8,
+    cat: 'Health', catClass: 'health',
+    lang: 'English', langClass: 'english',
+    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=85',
+    imgAlt: 'Cancer Research',
+    title: 'Breakthrough Cancer Research Offers New Hope for Early Detection',
+    date: 'September 25, 2026', updated: '14 hours ago',
+    author: 'MZ Health Desk', readTime: '5 min',
+    trending: false,
+    body: `<p>Scientists at a leading Indian research institute have announced a major breakthrough in cancer detection technology. The new method, which uses a simple blood test combined with AI analysis, can detect multiple types of cancer at Stage 1 with over 95% accuracy — a development that experts say could save millions of lives globally.</p>
+<h2>How the Technology Works</h2>
+<p>The test analyses circulating tumour DNA in the bloodstream alongside specific protein biomarkers. The AI system, trained on data from over 500,000 patients, can identify patterns that are invisible to conventional diagnostic methods. The entire process takes less than four hours and costs a fraction of existing diagnostic procedures.</p>
+<div class="art-quote"><p>"We are not just improving cancer detection — we are fundamentally changing the way we approach early intervention. Many cancers that are currently fatal at diagnosis could become highly treatable with this technology."</p><cite>— Lead Researcher, National Cancer Research Institute</cite></div>
+<p>Clinical trials conducted across 12 hospitals in India, the United Kingdom, and Singapore have shown consistently high accuracy rates. Regulatory approvals are expected within 18 months, after which the test could be made available through government health programmes at subsidised costs.</p>`
+  },
+  9: {
+    id: 9,
+    cat: 'Politics', catClass: 'politics',
+    lang: 'Telugu', langClass: 'telugu',
+    img: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1200&q=85',
+    imgAlt: 'Telangana IT Policy',
+    title: 'తెలంగాణ ప్రభుత్వం పెట్టుబడులను ఆకర్షించేందుకు కొత్త IT విధానం ప్రకటించింది',
+    date: 'సెప్టెంబర్ 26, 2026', updated: '6 గంటల క్రితం',
+    author: 'MZ వార్తా విభాగం', readTime: '4 నిమిషాలు',
+    trending: false,
+    body: `<p>తెలంగాణ ప్రభుత్వం రాష్ట్రంలో టెక్నాలజీ పెట్టుబడులను ఆకర్షించేందుకు సమగ్రమైన కొత్త IT విధానాన్ని ప్రకటించింది. ఈ విధానం ద్వారా హైదరాబాద్ టెక్ కారిడార్‌లో మరింత అభివృద్ధి సాధించాలని ప్రభుత్వం లక్ష్యంగా నిర్ణయించింది.</p>
+<h2>విధానంలోని ముఖ్యాంశాలు</h2>
+<p>కొత్త IT విధానంలో స్టార్టప్‌లకు పన్ను రాయితీలు, భూమి కేటాయింపులో ప్రాధాన్యత మరియు నిపుణులైన మానవ వనరులకు ప్రత్యేక శిక్షణ కార్యక్రమాలు ఉన్నాయి. 2030 నాటికి 5 లక్షల IT ఉద్యోగాలు సృష్టించాలని లక్ష్యంగా పెట్టుకున్నారు.</p>
+<div class="art-quote"><p>"తెలంగాణ దేశంలో అత్యుత్తమ IT హబ్‌గా ఎదగాలని మేము కలలు కంటున్నాం. ఈ విధానం ఆ కలను నిజం చేసే మొదటి అడుగు."</p><cite>— తెలంగాణ IT మంత్రి</cite></div>
+<p>ఈ విధానానికి స్పందించి అనేక బహుళజాతి కంపెనీలు హైదరాబాద్‌లో తమ కార్యాలయాలను విస్తరించేందుకు ఆసక్తి వ్యక్తం చేశాయి. ఇప్పటికే పలు కంపెనీలు ప్రభుత్వంతో MOU కుదుర్చుకున్నాయి.</p>`
+  },
+  10: {
+    id: 10,
+    cat: 'Health', catClass: 'health',
+    lang: 'Malayalam', langClass: 'malayalam',
+    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=85',
+    imgAlt: 'Kerala Health',
+    title: 'തുടർച്ചയായ മൂന്നാം വർഷവും കേരളം ദേശീയ ആരോഗ്യ സൂചികയിൽ ഒന്നാം സ്ഥാനം നിലനിർത്തി',
+    date: 'സെപ്റ്റംബർ 26, 2026', updated: '2 മണിക്കൂർ മുമ്പ്',
+    author: 'MZ വാർത്ത വിഭാഗം', readTime: '4 മിനിറ്റ്',
+    trending: false,
+    body: `<p>ദേശീയ ആരോഗ്യ സൂചികയിൽ കേരളം മൂന്നാം തവണയും ഒന്നാം സ്ഥാനം കരസ്ഥമാക്കി. ശക്തമായ പൊതുജനാരോഗ്യ അടിസ്ഥാന സൗകര്യം, ഉയർന്ന ആരോഗ്യ സൂചികകൾ, ഫലപ്രദമായ സർക്കാർ ആരോഗ്യ പദ്ധതികൾ എന്നിവ ഈ നേട്ടത്തിന് കാരണമായി.</p>
+<h2>കേരളത്തിന്റെ ആരോഗ്യ രംഗ നേട്ടങ്ങൾ</h2>
+<p>സംസ്ഥാനത്തെ ശിശുമരണ നിരക്ക് ദേശീയ ശരാശരിയേക്കാൾ വളരെ കുറവാണ്. ആരോഗ്യ ജീവനക്കാർക്ക് തുടർ പരിശീലനം നൽകുന്ന പദ്ധതികളും ഗ്രാമപ്രദേശങ്ങളിൽ ആരോഗ്യ കേന്ദ്രങ്ങൾ ശക്തിപ്പെടുത്തുന്ന പ്രവർത്തനങ്ങളും ഈ നേട്ടത്തിൽ പ്രധാന പങ്ക് വഹിച്ചു.</p>
+<div class="art-quote"><p>"കേരളത്തിന്റെ ആരോഗ്യ മേഖലയിലെ നേട്ടങ്ങൾ ലോകത്തിന് തന്നെ ഒരു മാതൃകയാണ്."</p><cite>— ദേശീയ ആരോഗ്യ മന്ത്രാലയം</cite></div>
+<p>ഈ നേട്ടം നിലനിർത്തുന്നതിനൊപ്പം, ആരോഗ്യ സേവനങ്ങൾ കൂടുതൽ ജനങ്ങളിലേക്ക് എത്തിക്കുന്നതിനായി സർക്കാർ പുതിയ പദ്ധതികൾ ആവിഷ്കരിക്കുന്നതായി ആരോഗ്യ മന്ത്രി അറിയിച്ചു.</p>`
+  },
+  11: {
+    id: 11,
+    cat: 'Business', catClass: 'business',
+    lang: 'Hindi', langClass: 'hindi',
+    img: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=85',
+    imgAlt: 'Stock Market',
+    title: 'देश के बाजारों में सोने-चांदी की कीमतों में जबरदस्त उछाल',
+    date: 'सितंबर 26, 2026', updated: '6 घंटे पहले',
+    author: 'MZ व्यापार डेस्क', readTime: '4 मिनट',
+    trending: true,
+    body: `<p>घरेलू बाजारों में सोने और चांदी की कीमतों में जबरदस्त उछाल आया है। सोना प्रति 10 ग्राम 800 रुपये बढ़कर नई ऊंचाई पर पहुंच गया है, जबकि चांदी में भी प्रति किलोग्राम 1,200 रुपये की तेजी देखी गई है। बाजार विशेषज्ञों का कहना है कि वैश्विक अनिश्चितता और कमजोर रुपये के कारण कीमती धातुओं में निवेश बढ़ा है।</p>
+<h2>कीमतों में उछाल के कारण</h2>
+<p>अमेरिकी फेडरल रिजर्व की नीतियों में बदलाव, भू-राजनीतिक तनाव और घरेलू त्योहारी मांग ने मिलकर सोने की कीमतों को नई ऊंचाई पर पहुंचाया है। विशेषज्ञों का अनुमान है कि आने वाले महीनों में कीमतें और बढ़ सकती हैं।</p>
+<div class="art-quote"><p>"इस समय सोने में निवेश करना समझदारी हो सकती है, लेकिन निवेशकों को जोखिमों के बारे में भी जागरूक रहना चाहिए।"</p><cite>— वित्तीय विशेषज्ञ, मुंबई</cite></div>
+<p>ज्वेलरी उद्योग ने इस मूल्य वृद्धि को मिश्रित भावनाओं से देखा है। एक ओर जहां कारीगरों की मांग बढ़ी है, वहीं महंगाई के कारण आम ग्राहक सोने की खरीदारी में संकोच कर रहे हैं।</p>`
+  },
+  12: {
+    id: 12,
+    cat: 'Entertainment', catClass: 'entertainment',
+    lang: 'Tamil', langClass: 'tamil',
+    img: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=1200&q=85',
+    imgAlt: 'Tamil Cinema',
+    title: 'ரஜினிகாந்தின் புதிய திரைப்படம் முதல் நாள் வசூல் சாதனை படைத்தது',
+    date: 'செப்டம்பர் 26, 2026', updated: '5 மணி நேரம் முன்பு',
+    author: 'MZ பொழுதுபோக்கு பிரிவு', readTime: '3 நிமிடம்',
+    trending: true,
+    body: `<p>சூப்பர்ஸ்டார் ரஜினிகாந்தின் புதிய திரைப்படம் தமிழ்நாடு, ஆந்திரப் பிரதேசம் மற்றும் உலகளவில் முதல் நாள் வசூலில் அசத்தலான சாதனை படைத்துள்ளது. படம் வெளியான முதல் 24 மணி நேரத்திலேயே 100 கோடி ரூபாய் வசூல் கடந்தது.</p>
+<h2>படத்தின் சிறப்பம்சங்கள்</h2>
+<p>அ.ர.முருகதாஸ் இயக்கிய இந்த படத்தில் ரஜினிகாந்த் ஒரு சமூக நீதி போராளியாக நடித்துள்ளார். சிறப்பு விளைவுகள் மற்றும் கதை கட்டமைப்பு ரசிகர்களை வெகுவாக கவர்ந்துள்ளது. ஏ.ஆர்.ரஹ்மான் இசையமைத்த பாடல்கள் ஏற்கனவே டாப் சார்ட்டில் இடம் பெற்றுள்ளன.</p>
+<div class="art-quote"><p>"இது என் திரை வாழ்க்கையில் மிக முக்கியமான படம். ரசிகர்களின் அன்பு என்னை எப்போதும் உற்சாகப்படுத்துகிறது."</p><cite>— சூப்பர்ஸ்டார் ரஜினிகாந்த்</cite></div>
+<p>படம் 50-க்கும் மேற்பட்ட நாடுகளில் வெளியிடப்பட்டுள்ளது. வெளிநாட்டு ரசிகர்களிடையேயும் படம் மிகுந்த வரவேற்பைப் பெற்றுள்ளது. படத்தின் ஓடிடி உரிமை ஒரு பிரதான நிறுவனம் கோடிகளில் வாங்கியுள்ளது.</p>`
+  }
+};
+
+/* ── Render article from URL ?id= ── */
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var id = parseInt(params.get('id')) || 1;
+  var a = ARTICLES[id] || ARTICLES[1];
+
+  // Keep search and social metadata aligned with the selected story.
+  var titleCharacters = Array.from(a.title);
+  var shortTitle = titleCharacters.length > 55
+    ? titleCharacters.slice(0, 54).join('').replace(/\s+\S*$/, '') + '…'
+    : a.title;
+  document.title = shortTitle + ' — MZ News';
+
+  var summaryContainer = document.createElement('div');
+  summaryContainer.innerHTML = a.body;
+  var articleDescription = summaryContainer.querySelector('p').textContent.trim().replace(/\s+/g, ' ');
+  if (articleDescription.length > 160) {
+    articleDescription = articleDescription.slice(0, 157).replace(/\s+\S*$/, '') + '…';
+  }
+  var canonicalUrl = new URL('news-details.html?id=' + id, window.location.href).href;
+  document.querySelector('meta[name="description"]').content = articleDescription;
+  document.querySelector('meta[property="og:title"]').content = shortTitle + ' — MZ News';
+  document.querySelector('meta[property="og:description"]').content = articleDescription;
+  document.querySelector('meta[property="og:url"]').content = canonicalUrl;
+  document.querySelector('link[rel="canonical"]').href = canonicalUrl;
+  document.querySelector('meta[name="twitter:title"]').content = shortTitle + ' — MZ News';
+  document.querySelector('meta[name="twitter:description"]').content = articleDescription;
+
+  // Breadcrumb category
+  var bcCat = document.getElementById('bcCat');
+  if(bcCat){ bcCat.textContent = a.cat; bcCat.href = 'news-list.html?cat=' + a.catClass; }
+
+  // Featured image
+  var img = document.getElementById('artFeatImg');
+  if(img){ img.src = a.img; img.alt = a.imgAlt; }
+
+  // Badges
+  var catBadge = document.getElementById('artCatBadge');
+  if(catBadge){ catBadge.textContent = a.cat; catBadge.className = 'art-cat-badge ' + a.catClass; }
+  var langBadge = document.getElementById('artLangBadge');
+  if(langBadge){ langBadge.textContent = a.lang; }
+  var trendBadge = document.getElementById('artTrendBadge');
+  if(trendBadge){ trendBadge.style.display = a.trending ? 'inline-flex' : 'none'; }
+
+  // Title
+  var title = document.getElementById('artTitle');
+  if(title){ title.textContent = a.title; }
+
+  // Meta info
+  var dateEl = document.getElementById('artDate');
+  if(dateEl){ dateEl.innerHTML = 'Published: <strong>' + a.date + '</strong>'; }
+  var updEl = document.getElementById('artUpdated');
+  if(updEl){ updEl.innerHTML = 'Updated: <strong>' + a.updated + '</strong>'; }
+  var authEl = document.getElementById('artAuthor');
+  if(authEl){ authEl.innerHTML = 'By <strong>' + a.author + '</strong>'; }
+  var readEl = document.getElementById('artRead');
+  if(readEl){ readEl.innerHTML = '<strong>' + a.readTime + '</strong> read'; }
+
+  // Body
+  var body = document.getElementById('artBody');
+  if(body){ body.innerHTML = a.body; }
+
+  // Related articles — show 3 others
+  var relGrid = document.getElementById('relGrid');
+  if(relGrid){
+    var others = Object.values(ARTICLES).filter(function(x){ return x.id !== id; }).slice(0, 3);
+    relGrid.innerHTML = others.map(function(r){
+      return '<a href="news-details.html?id=' + r.id + '" class="arc">' +
+        '<img class="arc-img" src="' + r.img + '" alt="' + r.imgAlt + '" />' +
+        '<div class="arc-body">' +
+          '<span class="arc-badge ' + r.catClass + '">' + r.cat + '</span>' +
+          '<div class="arc-title">' + r.title + '</div>' +
+          '<div class="arc-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' + r.updated + '</div>' +
+        '</div></a>';
+    }).join('');
+  }
+})();
+
+// Copy link
+document.getElementById('copyLinkBtn').addEventListener('click', function(){
+  navigator.clipboard.writeText(window.location.href).then(function(){
+    var s = document.querySelector('#copyLinkBtn span');
+    if(s){ var o=s.textContent; s.textContent='Copied!'; document.getElementById('copyLinkBtn').style.background='#059669'; setTimeout(function(){ s.textContent=o; document.getElementById('copyLinkBtn').style.background=''; },2000); }
+  });
+});
+</script>
+</body>
+</html>
