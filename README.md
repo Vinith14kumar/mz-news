@@ -122,8 +122,8 @@ To display your website screenshot in this section, add an image to your reposit
 
 ## 👨‍💻 Author
 
-**Nandha Kumar**  
-Frontend Developer
+**Vinith Kumar**  
+3rd Computer Science Engineering
 
 GitHub: [Your GitHub Profile](https://github.com/)
 
